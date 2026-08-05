@@ -97,6 +97,17 @@
       --chat--toggle--background: #2563eb;
       --chat--toggle--hover--background: #1d4ed8;
     }
+
+    /* Inline chat box */
+    #chat-box {
+      height: 520px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 4px 16px rgba(0,0,0,.06);
+    }
+    #chat-box .chat-layout { height: 100%; }
   </style>
 </head>
 <body>
@@ -238,7 +249,15 @@
         <strong>Bachelor's Degree</strong>
         <div class="meta" style="color:var(--muted);font-size:.9rem;">Cavite State University · June 2007 – October 2011</div>
       </div>
-      <p class="hint">💬 Have a question about Minnie's background? Click the chat bubble in the bottom-right corner to ask the AI assistant.</p>
+    </div>
+  </section>
+
+  <section id="ask">
+    <div class="wrap">
+      <h2>Ask Minnie's AI Assistant</h2>
+      <p style="margin-bottom:18px;color:var(--muted);">Type a question below about Minnie's experience, education, skills, or certifications. For anything not covered, the assistant will point you to her email or phone.</p>
+      <div id="chat-box"></div>
+      <p class="hint">💬 You can also use the chat bubble in the bottom-right corner anytime.</p>
     </div>
   </section>
 
@@ -252,23 +271,38 @@
   <script type="module">
     import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
 
+    const WEBHOOK = 'https://clairemv.app.n8n.cloud/webhook/c97dc6e7-756c-4e52-8ec5-a877f7a93fa9/chat';
+    const initialMessages = [
+      "Hi! 👋 I'm Minnie's portfolio assistant.",
+      'Ask me anything about her experience, skills, certifications, or how to get in touch.'
+    ];
+    const i18n = {
+      en: {
+        title: "Chat with Minnie's Assistant",
+        subtitle: "Ask about Minnie Claire Ventura's experience & skills.",
+        getStarted: 'New Conversation',
+        inputPlaceholder: 'Ask about experience, skills, contact...',
+        footer: ''
+      }
+    };
+
+    // Inline chat box embedded in the page (with its own text input)
     createChat({
-      webhookUrl: 'https://clairemv.app.n8n.cloud/webhook/c97dc6e7-756c-4e52-8ec5-a877f7a93fa9/chat',
+      webhookUrl: WEBHOOK,
+      target: '#chat-box',
+      mode: 'fullscreen',
+      showWelcomeScreen: false,
+      initialMessages,
+      i18n
+    });
+
+    // Floating chat bubble in the bottom-right corner
+    createChat({
+      webhookUrl: WEBHOOK,
       mode: 'window',
       showWelcomeScreen: false,
-      initialMessages: [
-        "Hi! 👋 I'm Minnie's portfolio assistant.",
-        'Ask me anything about her experience, skills, certifications, or how to get in touch.'
-      ],
-      i18n: {
-        en: {
-          title: "Chat with Minnie's Assistant",
-          subtitle: "Ask about Minnie Claire Ventura's experience & skills.",
-          getStarted: 'New Conversation',
-          inputPlaceholder: 'Ask about experience, skills, contact...',
-          footer: ''
-        }
-      }
+      initialMessages,
+      i18n
     });
   </script>
 
