@@ -49,6 +49,14 @@
     .hero p.tag { color: #cbd5e1; margin-top: 14px; max-width: 620px; }
     .hero .contacts { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 14px; font-size: .95rem; }
     .hero .contacts a, .hero .contacts span { color: #e2e8f0; }
+    .hero .cta { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn {
+      display: inline-block; padding: 11px 22px; border-radius: 999px;
+      font-weight: 600; font-size: .95rem; transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .btn:hover { text-decoration: none; transform: translateY(-1px); }
+    .btn-primary { background: #fff; color: #1e3a8a; box-shadow: 0 6px 18px rgba(0,0,0,.25); }
+    .btn-outline { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.6); }
 
     section { padding: 48px 0; }
     section:nth-child(even) { background: #fff; }
@@ -108,6 +116,12 @@
       box-shadow: 0 4px 16px rgba(0,0,0,.06);
     }
     #chat-box .chat-layout { height: 100%; }
+
+    /* Embedded contact form */
+    #contact-frame {
+      width: 100%; height: 720px; border: 1px solid var(--line);
+      border-radius: 14px; background: #fff; box-shadow: 0 4px 16px rgba(0,0,0,.06);
+    }
   </style>
 </head>
 <body>
@@ -124,6 +138,10 @@
           <span>📞 +63 991 542 5200</span>
           <span>📍 Biñan, Laguna, Philippines</span>
           <a href="https://www.linkedin.com/in/clairemanarangventura" target="_blank" rel="noopener">in/clairemanarangventura</a>
+        </div>
+        <div class="cta">
+          <a class="btn btn-primary" href="#contact">Contact Me</a>
+          <a class="btn btn-outline" href="#ask">Ask the AI Assistant</a>
         </div>
       </div>
     </div>
@@ -258,6 +276,14 @@
       <p style="margin-bottom:18px;color:var(--muted);">Type a question below about Minnie's experience, education, skills, or certifications. For anything not covered, the assistant will point you to her email or phone.</p>
       <div id="chat-box"></div>
       <p class="hint">💬 You can also use the chat bubble in the bottom-right corner anytime.</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <h2>Contact Me</h2>
+      <p style="margin-bottom:18px;color:var(--muted);">Have a question or opportunity? Fill out the form below and I will get back to you soon.</p>
+      <iframe id="contact-frame" src="https://clairemv.app.n8n.cloud/form/portfolio-contact" title="Contact form" loading="lazy"></iframe>
     </div>
   </section>
 
