@@ -58,13 +58,14 @@
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
-    .hero .wrap { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+    .hero .wrap { display: flex; align-items: center; gap: 28px; }
     .avatar {
       width: 130px; height: 130px; border-radius: 50%;
       background: linear-gradient(135deg, #3b82f6, #22d3ee);
       display: flex; align-items: center; justify-content: center;
       font-size: 44px; font-weight: 700; color: #fff; flex-shrink: 0;
       box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      animation: float 4.5s ease-in-out infinite;
       overflow: hidden; border: 3px solid rgba(255,255,255,.7);
     }
     .avatar img { width: 100%; height: 100%; object-fit: cover; }
@@ -82,7 +83,7 @@
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-12px); }
     }
-    .hero-text { animation: fadeUp 1s ease both; }
+    .hero-text { animation: fadeUp 1s ease both; flex: 1; min-width: 300px; }
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
       to { opacity: 1; transform: translateY(0); }
@@ -128,7 +129,7 @@
     .job ul { margin-left: 18px; color: #334155; }
     .job ul li { margin-bottom: 4px; }
 
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; margin-top: 20px; }
     .card {
       background: var(--card); border: 1px solid var(--line); border-radius: 12px;
       padding: 18px 20px; box-shadow: 0 1px 3px rgba(0,0,0,.04);
@@ -145,23 +146,23 @@
     .chip:hover { transform: translateY(-3px) scale(1.05); background: #bfdbfe; }
 
     /* Certification flip cards */
-    .flip-card { background: transparent; perspective: 1200px; min-height: 160px; }
+    .flip-card { background: transparent; perspective: 1200px; min-height: 180px; }
     .flip-inner {
-      position: relative; width: 100%; min-height: 160px;
+      position: relative; width: 100%; min-height: 180px;
       transition: transform .8s cubic-bezier(.4,.2,.2,1);
       transform-style: preserve-3d;
     }
     .flip-card:hover .flip-inner, .flip-card:focus-within .flip-inner { transform: rotateY(180deg); }
     .flip-front, .flip-back {
-      position: absolute; inset: 0; min-height: 160px;
+      position: absolute; inset: 0; min-height: 180px;
       -webkit-backface-visibility: hidden; backface-visibility: hidden;
       border-radius: 12px; display: flex; flex-direction: column;
       align-items: center; justify-content: center; text-align: center;
-      padding: 18px 20px; border: 1px solid var(--line);
+      padding: 20px; border: 1px solid var(--line);
     }
-    .flip-front { background: var(--card); box-shadow: 0 1px 3px rgba(0,0,0,.04); gap: 6px; }
-    .flip-front strong { font-size: .98rem; }
-    .flip-front small { color: var(--muted); }
+    .flip-front { background: var(--card); box-shadow: 0 1px 3px rgba(0,0,0,.04); gap: 8px; }
+    .flip-front strong { font-size: .98rem; line-height: 1.3; }
+    .flip-front small { color: var(--muted); font-size: .85rem; }
     .flip-back {
       background: linear-gradient(135deg, #2563eb, #1e3a8a);
       color: #fff; transform: rotateY(180deg); gap: 12px;
@@ -200,6 +201,11 @@
     }
     #chat-box .chat-layout { height: 100%; }
 
+    @media (max-width: 768px) {
+      .hero .wrap { flex-direction: column; }
+      .hero-text { min-width: auto; }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       * { animation: none !important; transition: none !important; }
       .reveal { opacity: 1; transform: none; }
@@ -216,12 +222,12 @@
       <div class="hero-text">
         <h1>Minnie Claire Ventura</h1>
         <div class="role">Data Engineer | Data Analyst | AI Enthusiast</div>
-        <p class="tag">Experienced Data Engineer and Data Analyst with 10+ years of progressive IT experience across data modeling, enterprise system integration, and cloud technologies — turning co[...]
+        <p class="tag">Experienced Data Engineer and Data Analyst with 10+ years of progressive IT experience across data modeling, enterprise system integration, and cloud technologies — turning complex data into actionable insights.</p>
         <div class="contacts">
           <a href="mailto:manarangclaire@gmail.com">✉ manarangclaire@gmail.com</a>
           <span>📞 +63 991 542 5200</span>
           <span>📍 Biñan, Laguna, Philippines</span>
-          <a href="https://www.linkedin.com/in/clairemanarangventura" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5[...]
+          <a href="https://www.linkedin.com/in/clairemanarangventura" target="_blank" rel="noopener" title="LinkedIn"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S.02 4.88.02 3.5C.02 2.12 1.13 1 2.5 1s2.48 1.12 2.48 2.5zm.02 4.5H.02v7h7v-7zm9.6 0h-7v7h7v-3.5c0-1.9.36-4.3 3.1-4.3 2.8 0 2.8 2.2 2.8 3.75V14.5h7v-4.1c0-3.45-.74-6.1-4.76-6.1-1.93 0-3.23.99-3.75 1.94v-1.74z"/></svg></a>
         </div>
         <div class="cta">
           <a class="btn btn-primary" href="#ask">Ask the AI Assistant</a>
@@ -234,7 +240,7 @@
   <section>
     <div class="wrap reveal">
       <h2>Professional Overview</h2>
-      <p>Proven in building and scaling large datasets, optimizing data storage, and translating complex data into actionable insights through advanced analytics and data visualization to support busi[...]
+      <p>Proven in building and scaling large datasets, optimizing data storage, and translating complex data into actionable insights through advanced analytics and data visualization to support business decisions. Skilled at managing end-to-end data pipelines, leading cross-functional projects, and implementing innovative solutions that drive measurable results.</p>
     </div>
   </section>
 
@@ -418,7 +424,7 @@
   <section id="ask">
     <div class="wrap reveal">
       <h2>Ask Minnie's AI Assistant</h2>
-      <p style="margin-bottom:18px;color:var(--muted);">Type a question below about Minnie's experience, education, skills, or certifications. For anything not covered, the assistant will point you to[...]
+      <p style="margin-bottom:18px;color:var(--muted);">Type a question below about Minnie's experience, education, skills, or certifications. For anything not covered, the assistant will point you to her contact information.</p>
       <div id="chat-box"></div>
       <p class="hint">💬 You can also use the chat bubble in the bottom-right corner anytime.</p>
     </div>
@@ -426,7 +432,7 @@
 
   <footer>
     <div class="wrap">
-      <p>© 2026 Minnie Claire Ventura · <a href="mailto:manarangclaire@gmail.com">manarangclaire@gmail.com</a> · <a href="https://www.linkedin.com/in/clairemanarangventura" target="_blank" rel="noo[...]
+      <p>© 2026 Minnie Claire Ventura · <a href="mailto:manarangclaire@gmail.com">manarangclaire@gmail.com</a> · <a href="https://www.linkedin.com/in/clairemanarangventura" target="_blank" rel="noopener">LinkedIn</a></p>
     </div>
   </footer>
 
