@@ -95,6 +95,7 @@
     .hero .contacts a, .hero .contacts span { color: #e2e8f0; }
     .hero .contacts a { display: inline-flex; align-items: center; gap: 6px; }
     .hero .contacts a svg { width: 18px; height: 18px; fill: #fff; background: #0a66c2; border-radius: 3px; padding: 2px; }
+    .hero .contacts a .social-handle { margin-left: 8px; color: #e2e8f0; font-weight: 600; font-size: .95rem; }
     .hero .cta { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 12px; }
     .btn {
       display: inline-block; padding: 11px 22px; border-radius: 999px;
@@ -205,6 +206,9 @@
       .hero .wrap { flex-direction: column; }
       .hero-text { min-width: auto; }
     }
+    @media (max-width: 420px) {
+      .hero .contacts a .social-handle { display: none; }
+    }
 
     @media (prefers-reduced-motion: reduce) {
       * { animation: none !important; transition: none !important; }
@@ -222,12 +226,15 @@
       <div class="hero-text">
         <h1>Minnie Claire Ventura</h1>
         <div class="role">Data Engineer | Data Analyst | AI Enthusiast</div>
-        <p class="tag">Experienced Data Engineer and Data Analyst with 10+ years of progressive IT experience across data modeling, enterprise system integration, and cloud technologies — turni[...]
+        <p class="tag">Experienced Data Engineer and Data Analyst with 10+ years of progressive IT experience across data modeling, enterprise system integration, and cloud technologies — turning co[...]</p>
         <div class="contacts">
           <a href="mailto:manarangclaire@gmail.com">✉ manarangclaire@gmail.com</a>
           <span>📞 +63 991 542 5200</span>
           <span>📍 Biñan, Laguna, Philippines</span>
-          <a href="https://www.linkedin.com/in/clairemanarangventura" target="_blank" rel="noopener" title="LinkedIn"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4.98 3.[...]"></path></svg><span style="margin-left:8px">/in/clairemanarangventura</span></a>
+          <a href="https://www.linkedin.com/in/clairemanarangventura" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn profile">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0V8zm7.5 0H12v2.2h.1c.6-1.2 2-2.5 4.3-2.5 4.6 0 5.4 3 5.4 6.9V24H17v-7.2c0-1.7 0-3.9-2.4-3.9-2.4 0-2.8 1.9-2.8 3.8V24H7.5V8z"/></svg>
+            <span class="social-handle">/in/clairemanarangventura</span>
+          </a>
         </div>
         <div class="cta">
           <a class="btn btn-primary" href="#ask">Ask the AI Assistant</a>
@@ -240,7 +247,7 @@
   <section>
     <div class="wrap reveal">
       <h2>Professional Overview</h2>
-      <p>Proven in building and scaling large datasets, optimizing data storage, and translating complex data into actionable insights through advanced analytics and data visualization to support[...]
+      <p>Proven in building and scaling large datasets, optimizing data storage, and translating complex data into actionable insights through advanced analytics and data visualization to support busi[...]</p>
     </div>
   </section>
 
@@ -424,7 +431,7 @@
   <section id="ask">
     <div class="wrap reveal">
       <h2>Ask Minnie's AI Assistant</h2>
-      <p style="margin-bottom:18px;color:var(--muted);">Type a question below about Minnie's experience, education, skills, or certifications. For anything not covered, the assistant will point y[...]
+      <p style="margin-bottom:18px;color:var(--muted);">Type a question below about Minnie's experience, education, skills, or certifications. For anything not covered, the assistant will point y[...]</p>
       <div id="chat-box"></div>
       <p class="hint">💬 You can also use the chat bubble in the bottom-right corner anytime.</p>
     </div>
@@ -432,7 +439,7 @@
 
   <footer>
     <div class="wrap">
-      <p>© 2026 Minnie Claire Ventura · <a href="mailto:manarangclaire@gmail.com">manarangclaire@gmail.com</a> · <a href="https://www.linkedin.com/in/clairemanarangventura" target="_blank" rel[...]
+      <p>© 2026 Minnie Claire Ventura · <a href="mailto:manarangclaire@gmail.com">manarangclaire@gmail.com</a> · <a href="https://www.linkedin.com/in/clairemanarangventura" target="_blank" rel="noopener">LinkedIn</a></p>
     </div>
   </footer>
 
