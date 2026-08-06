@@ -50,8 +50,8 @@
       background-size: 400% 400%;
       animation: gradientShift 16s ease infinite;
       color: #fff;
-      padding: 72px 0 64px;
-      overflow: visible; /* changed: allow intro paragraph to expand instead of being clipped */
+      padding: 56px 0 48px; /* reduced for tighter, modern header */
+      overflow: visible; /* allow intro paragraph to expand */
     }
     @keyframes gradientShift {
       0% { background-position: 0% 50%; }
@@ -60,7 +60,7 @@
     }
     .hero .wrap { display: flex; align-items: center; gap: 28px; }
     .avatar {
-      width: 130px; height: 130px; border-radius: 50%;
+      width: 120px; height: 120px; border-radius: 50%;
       background: linear-gradient(135deg, #3b82f6, #22d3ee);
       display: flex; align-items: center; justify-content: center;
       font-size: 44px; font-weight: 700; color: #fff; flex-shrink: 0;
@@ -83,19 +83,19 @@
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-12px); }
     }
-    .hero-text { animation: fadeUp 1s ease both; flex: 1; min-width: 300px; }
+    .hero-text { animation: fadeUp 1s ease both; flex: 1; min-width: 300px; max-width: 680px; }
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
       to { opacity: 1; transform: translateY(0); }
     }
     .hero h1 { font-size: 2.2rem; line-height: 1.15; }
-    .hero .role { color: #93c5fd; font-size: 1.15rem; margin-top: 6px; font-weight: 600; }
-    .hero p.tag { color: #cbd5e1; margin-top: 14px; max-width: 620px; }
+    .hero .role { color: #93c5fd; font-size: 1.125rem; margin-top: 6px; font-weight: 600; }
+    .hero p.tag { color: rgba(226,232,240,0.95); margin-top: 12px; max-width: 100%; font-size: 0.99rem; }
     .hero .contacts { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 14px; font-size: .95rem; }
     .hero .contacts a, .hero .contacts span { color: #e2e8f0; }
-    .hero .contacts a { display: inline-flex; align-items: center; gap: 6px; }
+    .hero .contacts a { display: inline-flex; align-items: center; gap: 8px; }
     .hero .contacts a svg { width: 18px; height: 18px; fill: #fff; background: #0a66c2; border-radius: 3px; padding: 2px; }
-    .hero .contacts a .social-handle { margin-left: 8px; color: #e2e8f0; font-weight: 600; font-size: .95rem; }
+    .hero .contacts a .social-handle { margin-left: 6px; color: rgba(255,255,255,0.95); font-weight: 600; font-size: .92rem; }
     .hero .cta { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 12px; }
     .btn {
       display: inline-block; padding: 11px 22px; border-radius: 999px;
@@ -202,12 +202,20 @@
     }
     #chat-box .chat-layout { height: 100%; }
 
+    @media (max-width: 1024px) {
+      header.hero { padding: 48px 0 40px; }
+      .avatar { width: 110px; height: 110px; }
+    }
     @media (max-width: 768px) {
-      .hero .wrap { flex-direction: column; }
+      .hero .wrap { flex-direction: column; align-items: flex-start; gap: 18px; }
       .hero-text { min-width: auto; }
+      .avatar { width: 100px; height: 100px; }
     }
     @media (max-width: 420px) {
       .hero .contacts a .social-handle { display: none; }
+      .avatar { width: 88px; height: 88px; }
+      .hero h1 { font-size: 1.6rem; }
+      .hero .role { font-size: 1rem; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -222,7 +230,7 @@
 
   <header class="hero">
     <div class="wrap">
-      <div class="avatar"><img src="claire%202x2.png" alt="Minnie Claire Ventura" onerror="this.style.display=&quot;none&quot;;this.parentNode.textContent=&quot;MV&quot;;" /></div>
+      <div class="avatar"><img src="claire%202x2.png" alt="Minnie Claire Ventura" onerror="this.style.display='none';this.parentNode.textContent='MV';" /></div>
       <div class="hero-text">
         <h1>Minnie Claire Ventura</h1>
         <div class="role">Data Engineer | Data Analyst | AI Enthusiast</div>
@@ -247,7 +255,7 @@
   <section>
     <div class="wrap reveal">
       <h2>Professional Overview</h2>
-      <p>Proven in building and scaling large datasets, optimizing data storage, and translating complex data into actionable insights through advanced analytics and data visualization to support busi[...]</p>
+      <p>Proven in building and scaling large datasets, optimizing data storage, and translating complex data into actionable insights through advanced analytics and data visualization to support business decisions and operational improvements.</p>
     </div>
   </section>
 
