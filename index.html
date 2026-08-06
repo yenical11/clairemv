@@ -21,6 +21,7 @@
       --line: #e2e8f0;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       color: var(--text);
@@ -32,9 +33,17 @@
     .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
 
     header.hero {
-      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+      background: linear-gradient(135deg, #0f172a, #1e3a8a, #2563eb, #0f172a);
+      background-size: 400% 400%;
+      animation: gradientShift 16s ease infinite;
       color: #fff;
       padding: 72px 0 64px;
+      overflow: hidden;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
     .hero .wrap { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
     .avatar {
@@ -43,6 +52,16 @@
       display: flex; align-items: center; justify-content: center;
       font-size: 44px; font-weight: 700; color: #fff; flex-shrink: 0;
       box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      animation: float 4.5s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+    .hero-text { animation: fadeUp 1s ease both; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     .hero h1 { font-size: 2.2rem; line-height: 1.15; }
     .hero .role { color: #93c5fd; font-size: 1.15rem; margin-top: 6px; font-weight: 600; }
@@ -54,7 +73,7 @@
       display: inline-block; padding: 11px 22px; border-radius: 999px;
       font-weight: 600; font-size: .95rem; transition: transform .15s ease, box-shadow .15s ease;
     }
-    .btn:hover { text-decoration: none; transform: translateY(-1px); }
+    .btn:hover { text-decoration: none; transform: translateY(-2px); }
     .btn-primary { background: #fff; color: #1e3a8a; box-shadow: 0 6px 18px rgba(0,0,0,.25); }
     .btn-outline { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.6); }
 
@@ -68,10 +87,16 @@
       width: 5px; border-radius: 4px; background: var(--accent);
     }
 
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(34px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
     .job {
       background: var(--card); border: 1px solid var(--line); border-radius: 12px;
       padding: 20px 22px; margin-bottom: 18px; box-shadow: 0 1px 3px rgba(0,0,0,.04);
+      transition: transform .2s ease, box-shadow .2s ease;
     }
+    .job:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,.10); }
     .job h3 { font-size: 1.12rem; }
     .job .meta { color: var(--muted); font-size: .9rem; margin: 2px 0 12px; }
     .job ul { margin-left: 18px; color: #334155; }
@@ -81,15 +106,47 @@
     .card {
       background: var(--card); border: 1px solid var(--line); border-radius: 12px;
       padding: 18px 20px; box-shadow: 0 1px 3px rgba(0,0,0,.04);
+      transition: transform .2s ease, box-shadow .2s ease;
     }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,.10); }
     .card h4 { font-size: 1rem; margin-bottom: 10px; color: var(--accent); }
     .chips { display: flex; flex-wrap: wrap; gap: 8px; }
     .chip {
       background: var(--accent-soft); color: #1d4ed8; border-radius: 999px;
       padding: 5px 12px; font-size: .82rem; font-weight: 500;
+      transition: transform .15s ease, background .15s ease;
     }
-    .cert { display: flex; flex-direction: column; gap: 4px; }
-    .cert small { color: var(--muted); }
+    .chip:hover { transform: translateY(-3px) scale(1.05); background: #bfdbfe; }
+
+    /* Certification flip cards */
+    .flip-card { background: transparent; perspective: 1200px; min-height: 160px; }
+    .flip-inner {
+      position: relative; width: 100%; min-height: 160px;
+      transition: transform .8s cubic-bezier(.4,.2,.2,1);
+      transform-style: preserve-3d;
+    }
+    .flip-card:hover .flip-inner, .flip-card:focus-within .flip-inner { transform: rotateY(180deg); }
+    .flip-front, .flip-back {
+      position: absolute; inset: 0; min-height: 160px;
+      -webkit-backface-visibility: hidden; backface-visibility: hidden;
+      border-radius: 12px; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center;
+      padding: 18px 20px; border: 1px solid var(--line);
+    }
+    .flip-front { background: var(--card); box-shadow: 0 1px 3px rgba(0,0,0,.04); gap: 6px; }
+    .flip-front strong { font-size: .98rem; }
+    .flip-front small { color: var(--muted); }
+    .flip-back {
+      background: linear-gradient(135deg, #2563eb, #1e3a8a);
+      color: #fff; transform: rotateY(180deg); gap: 12px;
+    }
+    .flip-back span { font-size: .92rem; opacity: .92; }
+    .flip-back a {
+      color: #fff; font-weight: 600; font-size: .9rem;
+      border: 1.5px solid rgba(255,255,255,.75); padding: 9px 18px; border-radius: 999px;
+      transition: background .15s ease;
+    }
+    .flip-back a:hover { text-decoration: none; background: rgba(255,255,255,.18); }
 
     footer {
       background: var(--bg); color: #cbd5e1; padding: 32px 0; text-align: center; font-size: .9rem;
@@ -117,10 +174,9 @@
     }
     #chat-box .chat-layout { height: 100%; }
 
-    /* Embedded contact form */
-    #contact-frame {
-      width: 100%; height: 720px; border: 1px solid var(--line);
-      border-radius: 14px; background: #fff; box-shadow: 0 4px 16px rgba(0,0,0,.06);
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
     }
   </style>
 </head>
@@ -129,7 +185,7 @@
   <header class="hero">
     <div class="wrap">
       <div class="avatar">MV</div>
-      <div>
+      <div class="hero-text">
         <h1>Minnie Claire Ventura</h1>
         <div class="role">Data Engineer &amp; Data Analyst</div>
         <p class="tag">Experienced Data Engineer and Data Analyst with 10+ years of progressive IT experience across data modeling, enterprise system integration, and cloud technologies — turning complex data into actionable insights.</p>
@@ -140,15 +196,15 @@
           <a href="https://www.linkedin.com/in/clairemanarangventura" target="_blank" rel="noopener">in/clairemanarangventura</a>
         </div>
         <div class="cta">
-          <a class="btn btn-primary" href="#contact">Contact Me</a>
-          <a class="btn btn-outline" href="#ask">Ask the AI Assistant</a>
+          <a class="btn btn-primary" href="#ask">Ask the AI Assistant</a>
+          <a class="btn btn-outline" href="mailto:manarangclaire@gmail.com">Email Me</a>
         </div>
       </div>
     </div>
   </header>
 
   <section>
-    <div class="wrap">
+    <div class="wrap reveal">
       <h2>Professional Overview</h2>
       <p>Proven in building and scaling large datasets, optimizing data storage, and translating complex data into actionable insights through advanced analytics and data visualization to support business decision-making.</p>
     </div>
@@ -156,9 +212,9 @@
 
   <section>
     <div class="wrap">
-      <h2>Work Experience</h2>
+      <h2 class="reveal">Work Experience</h2>
 
-      <div class="job">
+      <div class="job reveal">
         <h3>Data Engineer</h3>
         <div class="meta">Liongard Inc — Houston, Texas, USA (Remote) · June 2025 – August 2026</div>
         <ul>
@@ -168,7 +224,7 @@
         </ul>
       </div>
 
-      <div class="job">
+      <div class="job reveal">
         <h3>Data Engineer</h3>
         <div class="meta">MSPBots.ai — Chicago, Illinois, USA (Remote) · May 2023 – March 2025</div>
         <ul>
@@ -180,7 +236,7 @@
         </ul>
       </div>
 
-      <div class="job">
+      <div class="job reveal">
         <h3>Analyst Programmer</h3>
         <div class="meta">Amkor Worldwide Services — Muntinlupa, Philippines · May 2013 – May 2023</div>
         <ul>
@@ -193,7 +249,7 @@
         </ul>
       </div>
 
-      <div class="job">
+      <div class="job reveal">
         <h3>Production Support Analyst</h3>
         <div class="meta">KForce Global Solutions — Makati, Philippines · May 2012 – May 2013</div>
         <ul>
@@ -207,9 +263,9 @@
 
   <section>
     <div class="wrap">
-      <h2>Skills</h2>
+      <h2 class="reveal">Skills</h2>
       <div class="grid">
-        <div class="card">
+        <div class="card reveal">
           <h4>Data &amp; Integration</h4>
           <div class="chips">
             <span class="chip">ETL</span><span class="chip">Data Modeling</span>
@@ -217,18 +273,18 @@
             <span class="chip">JMESPath</span><span class="chip">EDI</span><span class="chip">MQ</span>
           </div>
         </div>
-        <div class="card">
+        <div class="card reveal">
           <h4>Databases</h4>
           <div class="chips">
             <span class="chip">PostgreSQL</span><span class="chip">MS SQL</span>
             <span class="chip">Snowflake</span><span class="chip">AS400</span>
           </div>
         </div>
-        <div class="card">
+        <div class="card reveal">
           <h4>Visualization</h4>
           <div class="chips"><span class="chip">PowerBI</span></div>
         </div>
-        <div class="card">
+        <div class="card reveal">
           <h4>Languages</h4>
           <div class="chips">
             <span class="chip">SQL</span><span class="chip">XML</span><span class="chip">XSLT</span>
@@ -242,26 +298,63 @@
 
   <section>
     <div class="wrap">
-      <h2>Certifications</h2>
+      <h2 class="reveal">Certifications</h2>
+      <p class="reveal" style="margin-bottom:18px;color:var(--muted);">Hover a card to flip it and view the credential.</p>
       <div class="grid">
-        <div class="card cert">
-          <strong>AWS AI &amp; ML Scholars</strong>
-          <small>Udacity · May 2026</small>
+        <div class="flip-card reveal">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <strong>AWS AI &amp; ML Scholars</strong>
+              <small>Udacity · June 2026</small>
+            </div>
+            <div class="flip-back">
+              <span>AWS AI &amp; ML Scholars</span>
+              <a href="https://www.udacity.com/certificate/e/6f8cda66-2a14-11f1-b2cb-872ef39be1c2" target="_blank" rel="noopener">View Credential →</a>
+            </div>
+          </div>
         </div>
-        <div class="card cert">
-          <strong>Northstar — Data Ingestion, Transformation, and Delivery with Snowflake</strong>
-          <small>Snowflake Developers · July 2026</small>
+        <div class="flip-card reveal">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <strong>Hands-On Essentials: Data Warehousing Workshop</strong>
+              <small>Snowflake · June 2025</small>
+            </div>
+            <div class="flip-back">
+              <span>Data Warehousing Workshop</span>
+              <a href="https://achieve.snowflake.com/915afa54-0b2a-405b-9f77-6e20e0eaec5f#acc.7j6BrZWO" target="_blank" rel="noopener">View Credential →</a>
+            </div>
+          </div>
         </div>
-        <div class="card cert">
-          <strong>Hands-On Essentials: Data Warehousing Workshop</strong>
-          <small>Snowflake · June 2025</small>
+        <div class="flip-card reveal">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <strong>Northstar — Data Ingestion, Transformation, and Delivery with Snowflake</strong>
+              <small>Snowflake Developers · July 2026</small>
+            </div>
+            <div class="flip-back">
+              <span>Northstar Snowflake</span>
+              <a href="https://developerbadges.snowflake.com/4c41fe7d-3a97-4c00-91e9-6d9ae1410567" target="_blank" rel="noopener">View Credential →</a>
+            </div>
+          </div>
+        </div>
+        <div class="flip-card reveal">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <strong>From Zero to Agents: Building End-To-End Data Pipelines for an AI Agent</strong>
+              <small>Snowflake Developers · July 2026</small>
+            </div>
+            <div class="flip-back">
+              <span>Zero to Agents</span>
+              <a href="https://developerbadges.snowflake.com/d8242c68-f59a-4a2d-aed5-d60d276313d1#acc.FWEwtryV" target="_blank" rel="noopener">View Credential →</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <section>
-    <div class="wrap">
+    <div class="wrap reveal">
       <h2>Education</h2>
       <div class="card">
         <strong>Bachelor's Degree</strong>
@@ -271,19 +364,11 @@
   </section>
 
   <section id="ask">
-    <div class="wrap">
+    <div class="wrap reveal">
       <h2>Ask Minnie's AI Assistant</h2>
       <p style="margin-bottom:18px;color:var(--muted);">Type a question below about Minnie's experience, education, skills, or certifications. For anything not covered, the assistant will point you to her email or phone.</p>
       <div id="chat-box"></div>
       <p class="hint">💬 You can also use the chat bubble in the bottom-right corner anytime.</p>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="wrap">
-      <h2>Contact Me</h2>
-      <p style="margin-bottom:18px;color:var(--muted);">Have a question or opportunity? Fill out the form below and I will get back to you soon.</p>
-      <iframe id="contact-frame" src="https://clairemv.app.n8n.cloud/form/portfolio-contact" title="Contact form" loading="lazy"></iframe>
     </div>
   </section>
 
@@ -292,6 +377,16 @@
       <p>© 2026 Minnie Claire Ventura · <a href="mailto:manarangclaire@gmail.com">manarangclaire@gmail.com</a> · <a href="https://www.linkedin.com/in/clairemanarangventura" target="_blank" rel="noopener">LinkedIn</a></p>
     </div>
   </footer>
+
+  <!-- Scroll reveal animation -->
+  <script>
+    const io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { entry.target.classList.add("visible"); io.unobserve(entry.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+  </script>
 
   <!-- n8n Chat widget: AI assistant that answers visitor questions -->
   <script type="module">
@@ -312,7 +407,6 @@
       }
     };
 
-    // Inline chat box embedded in the page (with its own text input)
     createChat({
       webhookUrl: WEBHOOK,
       target: '#chat-box',
@@ -322,7 +416,6 @@
       i18n
     });
 
-    // Floating chat bubble in the bottom-right corner
     createChat({
       webhookUrl: WEBHOOK,
       mode: 'window',
