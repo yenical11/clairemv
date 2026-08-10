@@ -70,6 +70,22 @@
       --chat--toggle--color: #ffffff;
     }
 
+    /* Force text color and background inside n8n Chat input box for Dark Mode */
+    [data-theme="dark"] .chat-input input,
+    [data-theme="dark"] .chat-input textarea,
+    [data-theme="dark"] .n8n-chat input,
+    [data-theme="dark"] .n8n-chat textarea {
+      color: #f8fafc !important;
+      background-color: #0f172a !important;
+    }
+
+    [data-theme="dark"] .chat-input input::placeholder,
+    [data-theme="dark"] .chat-input textarea::placeholder,
+    [data-theme="dark"] .n8n-chat input::placeholder,
+    [data-theme="dark"] .n8n-chat textarea::placeholder {
+      color: #94a3b8 !important;
+    }
+
     /* Floating Chat Launcher Hover Animations */
     .chat-widget-toggle-button,
     button.chat-toggle {
