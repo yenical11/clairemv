@@ -19,98 +19,39 @@
       --text: #0f172a;
       --muted: #64748b;
       --line: #e2e8f0;
-      --page: #f1f5f9;
-      --section-alt: #ffffff;
-      --chat--color-primary: #2563eb;
-      --chat--color-secondary: #1e3a8a;
-      --chat--toggle--background: #2563eb;
-      --chat--toggle--hover--background: #1d4ed8;
-    }
-    [data-theme="dark"] {
-      --card: #1e293b;
-      --accent: #60a5fa;
-      --accent-soft: #1e3a5f;
-      --text: #e2e8f0;
-      --muted: #94a3b8;
-      --line: #334155;
-      --page: #0b1220;
-      --section-alt: #111a2e;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       color: var(--text);
-      background: var(--page);
+      background: #f1f5f9;
       line-height: 1.6;
-      transition: background .3s ease, color .3s ease;
     }
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
     .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
 
     header.hero {
-      background: linear-gradient(135deg, #0f172a, #1e3a8a, #2563eb, #0f172a);
-      background-size: 400% 400%;
-      animation: gradientShift 16s ease infinite;
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
       color: #fff;
-      padding: 56px 0 48px;
-      overflow: visible;
+      padding: 72px 0 64px;
     }
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    .hero .wrap { display: flex; align-items: center; gap: 28px; }
+    .hero .wrap { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
     .avatar {
       width: 120px; height: 120px; border-radius: 50%;
       background: linear-gradient(135deg, #3b82f6, #22d3ee);
       display: flex; align-items: center; justify-content: center;
       font-size: 44px; font-weight: 700; color: #fff; flex-shrink: 0;
       box-shadow: 0 10px 30px rgba(0,0,0,.35);
-      animation: float 4.5s ease-in-out infinite;
-      overflow: hidden; border: 3px solid rgba(255,255,255,.7);
-    }
-    .avatar img { width: 100%; height: 100%; object-fit: cover; }
-
-    /* Theme toggle */
-    .theme-toggle {
-      position: fixed; top: 18px; right: 18px; z-index: 1000;
-      width: 44px; height: 44px; border-radius: 50%; cursor: pointer;
-      border: 1px solid var(--line); background: var(--card); color: var(--text);
-      font-size: 20px; display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 14px rgba(0,0,0,.15); transition: transform .2s ease, background .3s ease;
-    }
-    .theme-toggle:hover { transform: scale(1.1) rotate(15deg); }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
-    }
-    .hero-text { animation: fadeUp 1s ease both; flex: 1; min-width: 300px; max-width: 680px; }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
     }
     .hero h1 { font-size: 2.2rem; line-height: 1.15; }
-    .hero .role { color: #93c5fd; font-size: 1.125rem; margin-top: 6px; font-weight: 600; }
-    .hero p.tag { color: rgba(226,232,240,0.95); margin-top: 12px; max-width: 100%; font-size: 0.99rem; }
+    .hero .role { color: #93c5fd; font-size: 1.15rem; margin-top: 6px; font-weight: 600; }
+    .hero p.tag { color: #cbd5e1; margin-top: 14px; max-width: 620px; }
     .hero .contacts { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 14px; font-size: .95rem; }
     .hero .contacts a, .hero .contacts span { color: #e2e8f0; }
-    .hero .contacts a { display: inline-flex; align-items: center; gap: 8px; }
-    .hero .contacts a svg { width: 18px; height: 18px; fill: #fff; background: #0a66c2; border-radius: 3px; padding: 2px; }
-    .hero .contacts a .social-handle { margin-left: 6px; color: rgba(255,255,255,0.95); font-weight: 600; font-size: .92rem; }
-    .hero .cta { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 12px; }
-    .btn {
-      display: inline-block; padding: 11px 22px; border-radius: 999px;
-      font-weight: 600; font-size: .95rem; transition: transform .15s ease, box-shadow .15s ease;
-    }
-    .btn:hover { text-decoration: none; transform: translateY(-2px); }
-    .btn-primary { background: #fff; color: #1e3a8a; box-shadow: 0 6px 18px rgba(0,0,0,.25); }
-    .btn-outline { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.6); }
 
     section { padding: 48px 0; }
-    section:nth-child(even) { background: var(--section-alt); }
+    section:nth-child(even) { background: #fff; }
     h2 {
       font-size: 1.5rem; margin-bottom: 24px; position: relative; padding-left: 14px;
     }
@@ -119,66 +60,28 @@
       width: 5px; border-radius: 4px; background: var(--accent);
     }
 
-    /* Scroll reveal */
-    .reveal { opacity: 0; transform: translateY(34px); transition: opacity .7s ease, transform .7s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
     .job {
       background: var(--card); border: 1px solid var(--line); border-radius: 12px;
       padding: 20px 22px; margin-bottom: 18px; box-shadow: 0 1px 3px rgba(0,0,0,.04);
-      transition: transform .2s ease, box-shadow .2s ease;
     }
-    .job:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,.10); }
     .job h3 { font-size: 1.12rem; }
-    .job .meta { color: var(--text); font-size: .9rem; margin: 2px 0 12px; }
-    .job ul { margin-left: 18px; color: var(--text); }
+    .job .meta { color: var(--muted); font-size: .9rem; margin: 2px 0 12px; }
+    .job ul { margin-left: 18px; color: #334155; }
     .job ul li { margin-bottom: 4px; }
 
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; margin-top: 20px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
     .card {
       background: var(--card); border: 1px solid var(--line); border-radius: 12px;
       padding: 18px 20px; box-shadow: 0 1px 3px rgba(0,0,0,.04);
-      transition: transform .2s ease, box-shadow .2s ease;
     }
-    .card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,.10); }
     .card h4 { font-size: 1rem; margin-bottom: 10px; color: var(--accent); }
     .chips { display: flex; flex-wrap: wrap; gap: 8px; }
     .chip {
       background: var(--accent-soft); color: #1d4ed8; border-radius: 999px;
       padding: 5px 12px; font-size: .82rem; font-weight: 500;
-      transition: transform .15s ease, background .15s ease;
     }
-    .chip:hover { transform: translateY(-3px) scale(1.05); background: #bfdbfe; }
-
-    /* Certification flip cards */
-    .flip-card { background: transparent; perspective: 1200px; min-height: 180px; }
-    .flip-inner {
-      position: relative; width: 100%; min-height: 180px;
-      transition: transform .8s cubic-bezier(.4,.2,.2,1);
-      transform-style: preserve-3d;
-    }
-    .flip-card:hover .flip-inner, .flip-card:focus-within .flip-inner { transform: rotateY(180deg); }
-    .flip-front, .flip-back {
-      position: absolute; inset: 0; min-height: 180px;
-      -webkit-backface-visibility: hidden; backface-visibility: hidden;
-      border-radius: 12px; display: flex; flex-direction: column;
-      align-items: center; justify-content: center; text-align: center;
-      padding: 20px; border: 1px solid var(--line);
-    }
-    .flip-front { background: var(--card); box-shadow: 0 1px 3px rgba(0,0,0,.04); gap: 8px; }
-    .flip-front strong { font-size: .98rem; line-height: 1.3; }
-    .flip-front small { color: var(--muted); font-size: .85rem; }
-    .flip-back {
-      background: linear-gradient(135deg, #2563eb, #1e3a8a);
-      color: #fff; transform: rotateY(180deg); gap: 12px;
-    }
-    .flip-back span { font-size: .92rem; opacity: .92; }
-    .flip-back a {
-      color: #fff; font-weight: 600; font-size: .9rem;
-      border: 1.5px solid rgba(255,255,255,.75); padding: 9px 18px; border-radius: 999px;
-      transition: background .15s ease;
-    }
-    .flip-back a:hover { text-decoration: none; background: rgba(255,255,255,.18); }
+    .cert { display: flex; flex-direction: column; gap: 4px; }
+    .cert small { color: var(--muted); }
 
     footer {
       background: var(--bg); color: #cbd5e1; padding: 32px 0; text-align: center; font-size: .9rem;
@@ -188,64 +91,28 @@
       text-align: center; color: var(--muted); font-size: .9rem; margin-top: 28px;
     }
 
-    /* Inline chat box container styling */
-    #chat-box {
-      min-height: 500px;
-      height: 600px;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      overflow: hidden;
-      background: var(--card);
-      box-shadow: 0 4px 16px rgba(0,0,0,.06);
-      position: relative;
-    }
-
-    @media (max-width: 1024px) {
-      header.hero { padding: 48px 0 40px; }
-      .avatar { width: 110px; height: 110px; }
-    }
-    @media (max-width: 768px) {
-      .hero .wrap { flex-direction: column; align-items: flex-start; gap: 18px; }
-      .hero-text { min-width: auto; }
-      .avatar { width: 100px; height: 100px; }
-    }
-    @media (max-width: 420px) {
-      .hero .contacts a .social-handle { display: none; }
-      .avatar { width: 88px; height: 88px; }
-      .hero h1 { font-size: 1.6rem; }
-      .hero .role { font-size: 1rem; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      * { animation: none !important; transition: none !important; }
-      .reveal { opacity: 1; transform: none; }
+    :root {
+      --chat--color-primary: #2563eb;
+      --chat--color-secondary: #1e3a8a;
+      --chat--toggle--background: #2563eb;
+      --chat--toggle--hover--background: #1d4ed8;
     }
   </style>
 </head>
 <body>
 
-  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark/light mode">🌙</button>
-
   <header class="hero">
     <div class="wrap">
-      <div class="avatar"><img src="claire%202x2.png" alt="Minnie Claire Ventura" onerror="this.style.display='none';this.parentNode.textContent='MV';" /></div>
-      <div class="hero-text">
+      <div class="avatar">MV</div>
+      <div>
         <h1>Minnie Claire Ventura</h1>
-        <div class="role">Data Engineer | Data Analyst | AI Enthusiast</div>
+        <div class="role">Data Engineer &amp; Data Analyst</div>
+        <p class="tag">Experienced Data Engineer and Data Analyst with 10+ years of progressive IT experience across data modeling, enterprise system integration, and cloud technologies — turning complex data into actionable insights.</p>
         <div class="contacts">
           <a href="mailto:manarangclaire@gmail.com">✉ manarangclaire@gmail.com</a>
           <span>📞 +63 991 542 5200</span>
           <span>📍 Biñan, Laguna, Philippines</span>
-          <a href="https://www.linkedin.com/in/clairemanarangventura" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn profile">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.03-1.85-3.03-1.85 0-2.13 1.45-2.13 2.94v5.66H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.27 2.38 4.27 5.47v6.27zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0z"/>
-            </svg>
-            <span class="social-handle">/in/clairemanarangventura</span>
-          </a>
-        </div>
-        <div class="cta">
-          <a class="btn btn-primary" href="#ask">Ask the AI Assistant</a>
-          <a class="btn btn-outline" href="mailto:manarangclaire@gmail.com">Email Me</a>
+          <a href="https://www.linkedin.com/in/clairemanarangventura" target="_blank" rel="noopener">in/clairemanarangventura</a>
         </div>
       </div>
     </div>
@@ -253,24 +120,16 @@
 
   <section>
     <div class="wrap">
-      <h2 class="reveal">Professional Overview</h2>
-      <div class="card reveal">
-        <p>
-          Experienced Data Engineer and Data Analyst with 10+ years of progressive IT experience
-          across data modeling, enterprise system integration, and cloud technologies. Proven in
-          building and scaling large datasets, optimizing data storage, and translating complex data
-          into actionable insights through advanced analytics and data visualization to support
-          business decision-making.
-        </p>
-      </div>
+      <h2>Professional Overview</h2>
+      <p>Proven in building and scaling large datasets, optimizing data storage, and translating complex data into actionable insights through advanced analytics and data visualization to support business decision-making.</p>
     </div>
   </section>
 
   <section>
     <div class="wrap">
-      <h2 class="reveal">Work Experience</h2>
+      <h2>Work Experience</h2>
 
-      <div class="job reveal">
+      <div class="job">
         <h3>Data Engineer</h3>
         <div class="meta">Liongard Inc — Houston, Texas, USA (Remote) · June 2025 – August 2026</div>
         <ul>
@@ -280,7 +139,7 @@
         </ul>
       </div>
 
-      <div class="job reveal">
+      <div class="job">
         <h3>Data Engineer</h3>
         <div class="meta">MSPBots.ai — Chicago, Illinois, USA (Remote) · May 2023 – March 2025</div>
         <ul>
@@ -292,7 +151,7 @@
         </ul>
       </div>
 
-      <div class="job reveal">
+      <div class="job">
         <h3>Analyst Programmer</h3>
         <div class="meta">Amkor Worldwide Services — Muntinlupa, Philippines · May 2013 – May 2023</div>
         <ul>
@@ -305,7 +164,7 @@
         </ul>
       </div>
 
-      <div class="job reveal">
+      <div class="job">
         <h3>Production Support Analyst</h3>
         <div class="meta">KForce Global Solutions — Makati, Philippines · May 2012 – May 2013</div>
         <ul>
@@ -319,9 +178,9 @@
 
   <section>
     <div class="wrap">
-      <h2 class="reveal">Skills</h2>
+      <h2>Skills</h2>
       <div class="grid">
-        <div class="card reveal">
+        <div class="card">
           <h4>Data &amp; Integration</h4>
           <div class="chips">
             <span class="chip">ETL</span><span class="chip">Data Modeling</span>
@@ -329,18 +188,18 @@
             <span class="chip">JMESPath</span><span class="chip">EDI</span><span class="chip">MQ</span>
           </div>
         </div>
-        <div class="card reveal">
+        <div class="card">
           <h4>Databases</h4>
           <div class="chips">
             <span class="chip">PostgreSQL</span><span class="chip">MS SQL</span>
             <span class="chip">Snowflake</span><span class="chip">AS400</span>
           </div>
         </div>
-        <div class="card reveal">
+        <div class="card">
           <h4>Visualization</h4>
           <div class="chips"><span class="chip">PowerBI</span></div>
         </div>
-        <div class="card reveal">
+        <div class="card">
           <h4>Languages</h4>
           <div class="chips">
             <span class="chip">SQL</span><span class="chip">XML</span><span class="chip">XSLT</span>
@@ -354,101 +213,32 @@
 
   <section>
     <div class="wrap">
-      <h2 class="reveal">Certifications</h2>
-      <p class="reveal" style="margin-bottom:18px;color:var(--muted);">Hover a card to flip it and view the credential.</p>
+      <h2>Certifications</h2>
       <div class="grid">
-        <div class="flip-card reveal">
-          <div class="flip-inner">
-            <div class="flip-front">
-              <strong>AWS AI &amp; ML Scholars</strong>
-              <small>Udacity · June 2026</small>
-            </div>
-            <div class="flip-back">
-              <span>AWS AI &amp; ML Scholars</span>
-              <a href="https://www.udacity.com/certificate/e/6f8cda66-2a14-11f1-b2cb-872ef39be1c2" target="_blank" rel="noopener">View Credential →</a>
-            </div>
-          </div>
+        <div class="card cert">
+          <strong>AWS AI &amp; ML Scholars</strong>
+          <small>Udacity · May 2026</small>
         </div>
-        <div class="flip-card reveal">
-          <div class="flip-inner">
-            <div class="flip-front">
-              <strong>Hands-On Essentials: Data Warehousing Workshop</strong>
-              <small>Snowflake · June 2025</small>
-            </div>
-            <div class="flip-back">
-              <span>Data Warehousing Workshop</span>
-              <a href="https://achieve.snowflake.com/915afa54-0b2a-405b-9f77-6e20e0eaec5f#acc.7j6BrZWO" target="_blank" rel="noopener">View Credential →</a>
-            </div>
-          </div>
+        <div class="card cert">
+          <strong>Northstar — Data Ingestion, Transformation, and Delivery with Snowflake</strong>
+          <small>Snowflake Developers · July 2026</small>
         </div>
-        <div class="flip-card reveal">
-          <div class="flip-inner">
-            <div class="flip-front">
-              <strong>Northstar — Data Ingestion, Transformation, and Delivery with Snowflake</strong>
-              <small>Snowflake Developers · July 2026</small>
-            </div>
-            <div class="flip-back">
-              <span>Northstar Snowflake</span>
-              <a href="https://developerbadges.snowflake.com/4c41fe7d-3a97-4c00-91e9-6d9ae1410567" target="_blank" rel="noopener">View Credential →</a>
-            </div>
-          </div>
-        </div>
-        <div class="flip-card reveal">
-          <div class="flip-inner">
-            <div class="flip-front">
-              <strong>From Zero to Agents: Building End-To-End Data Pipelines for an AI Agent</strong>
-              <small>Snowflake Developers · July 2026</small>
-            </div>
-            <div class="flip-back">
-              <span>Zero to Agents</span>
-              <a href="https://developerbadges.snowflake.com/d8242c68-f59a-4a2d-aed5-d60d276313d1#acc.FWEwtryV" target="_blank" rel="noopener">View Credential →</a>
-            </div>
-          </div>
-        </div>
-        <div class="flip-card reveal">
-          <div class="flip-inner">
-            <div class="flip-front">
-              <strong>Creating Declarative Data Pipelines with Dynamic Tables</strong>
-              <small>Snowflake Developers · July 2026</small>
-            </div>
-            <div class="flip-back">
-              <span>Declarative Data Pipelines</span>
-              <a href="https://developerbadges.snowflake.com/5d60d32f-dccf-4794-9093-e6a9f7392820#acc.DdbAWFYJ" target="_blank" rel="noopener">View Credential →</a>
-            </div>
-          </div>
-        </div>
-        <div class="flip-card reveal">
-          <div class="flip-inner">
-            <div class="flip-front">
-              <strong>Northstar - Getting Started with Cortex Code</strong>
-              <small>Snowflake Developers · July 2026</small>
-            </div>
-            <div class="flip-back">
-              <span>Cortex Code</span>
-              <a href="https://developerbadges.snowflake.com/f0e82b93-7f65-4a56-be9c-7ec1375040a0#acc.QoDk2Ge6" target="_blank" rel="noopener">View Credential →</a>
-            </div>
-          </div>
+        <div class="card cert">
+          <strong>Hands-On Essentials: Data Warehousing Workshop</strong>
+          <small>Snowflake · June 2025</small>
         </div>
       </div>
     </div>
   </section>
 
   <section>
-    <div class="wrap reveal">
+    <div class="wrap">
       <h2>Education</h2>
       <div class="card">
-        <strong>Bachelor's Degree in Computer Science</strong>
+        <strong>Bachelor's Degree</strong>
         <div class="meta" style="color:var(--muted);font-size:.9rem;">Cavite State University · June 2007 – October 2011</div>
       </div>
-    </div>
-  </section>
-
-  <section id="ask">
-    <div class="wrap reveal">
-      <h2>Ask Minnie's AI Assistant</h2>
-      <p style="margin-bottom:18px;color:var(--muted);">Type a question below about Minnie's experience, education, skills, or certifications.</p>
-      <div id="chat-box"></div>
-      <p class="hint">💬 You can also use the chat bubble in the bottom-right corner anytime.</p>
+      <p class="hint">💬 Have a question about Minnie's background? Click the chat bubble in the bottom-right corner to ask the AI assistant.</p>
     </div>
   </section>
 
@@ -458,65 +248,27 @@
     </div>
   </footer>
 
-  <!-- Theme toggle (dark/light) -->
-  <script>
-    (function () {
-      var root = document.documentElement;
-      var btn = document.getElementById("themeToggle");
-      var saved = localStorage.getItem("theme");
-      var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-      var theme = saved || (prefersDark ? "dark" : "light");
-      apply(theme);
-      function apply(t) {
-        if (t === "dark") { root.setAttribute("data-theme", "dark"); btn.textContent = "☀️"; }
-        else { root.removeAttribute("data-theme"); btn.textContent = "🌙"; }
-      }
-      btn.addEventListener("click", function () {
-        theme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
-        localStorage.setItem("theme", theme);
-        apply(theme);
-      });
-    })();
-  </script>
-
-  <!-- Scroll reveal animation -->
-  <script>
-    const io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) { entry.target.classList.add("visible"); io.unobserve(entry.target); }
-      });
-    }, { threshold: 0.12 });
-    document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
-  </script>
-
-  <!-- Fixed n8n Chat widget script -->
+  <!-- n8n Chat widget: AI assistant that answers visitor questions -->
   <script type="module">
-    import { createChat } from "https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js";
-
-    const WEBHOOK = "https://clairemv.app.n8n.cloud/webhook/c97dc6e7-756c-4e52-8ec5-a877f7a93fa9/chat";
-
-    const initialMessages = [
-      "Hi! 👋 I'm Minnie's portfolio assistant.",
-      "Ask me anything about her experience, skills, certifications, or how to get in touch."
-    ];
-
-    const i18n = {
-      en: {
-        title: "Chat with Minnie's Assistant",
-        subtitle: "Ask about Minnie Claire Ventura's experience & skills.",
-        getStarted: "New Conversation",
-        inputPlaceholder: "Ask about experience, skills, contact...",
-        footer: ""
-      }
-    };
+    import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
 
     createChat({
-      webhookUrl: WEBHOOK,
-      target: "#chat-box",
-      mode: "window",
+      webhookUrl: 'https://clairemv.app.n8n.cloud/webhook/c97dc6e7-756c-4e52-8ec5-a877f7a93fa9/chat',
+      mode: 'window',
       showWelcomeScreen: false,
-      initialMessages: initialMessages,
-      i18n: i18n
+      initialMessages: [
+        "Hi! 👋 I'm Minnie's portfolio assistant.",
+        'Ask me anything about her experience, skills, certifications, or how to get in touch.'
+      ],
+      i18n: {
+        en: {
+          title: "Chat with Minnie's Assistant",
+          subtitle: "Ask about Minnie Claire Ventura's experience & skills.",
+          getStarted: 'New Conversation',
+          inputPlaceholder: 'Ask about experience, skills, contact...',
+          footer: ''
+        }
+      }
     });
   </script>
 
