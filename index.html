@@ -197,6 +197,7 @@
       overflow: hidden;
       background: var(--card);
       box-shadow: 0 4px 16px rgba(0,0,0,.06);
+      position: relative;
     }
 
     @media (max-width: 1024px) {
@@ -488,11 +489,10 @@
     document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
   </script>
 
-  <!-- Corrected n8n Chat widget script -->
+  <!-- Fixed n8n Chat widget script -->
   <script type="module">
     import { createChat } from "https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js";
 
-    // Standard n8n chat webhook URL
     const WEBHOOK = "https://clairemv.app.n8n.cloud/webhook/c97dc6e7-756c-4e52-8ec5-a877f7a93fa9/chat";
 
     const initialMessages = [
@@ -510,11 +510,10 @@
       }
     };
 
-    // Single chat initialization embedded directly into #chat-box container
     createChat({
       webhookUrl: WEBHOOK,
       target: "#chat-box",
-      mode: "fullscreen",
+      mode: "window",
       showWelcomeScreen: false,
       initialMessages: initialMessages,
       i18n: i18n
