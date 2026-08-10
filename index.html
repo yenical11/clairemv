@@ -496,41 +496,46 @@ d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.03-1.85-3.03-1.85 0-2.13 1.45-2.13 2.94
   </script>
 
   <!-- n8n Chat widget: AI assistant that answers visitor questions -->
-  <script type="module">
-    import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+ <!-- n8n Chat widget -->
+<script type="module">
+  import { createChat } from "https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js";
 
-    const WEBHOOK = 'https://clairemv.app.n8n.cloud/webhook/c97dc6e7-756c-4e52-8ec5-a877f7a93fa9/chat';
-    const initialMessages = [
-      "Hi! 👋 I'm Minnie's portfolio assistant.",
-      'Ask me anything about her experience, skills, certifications, or how to get in touch.'
-    ];
-    const i18n = {
-      en: {
-        title: "Chat with Minnie's Assistant",
-        subtitle: "Ask about Minnie Claire Ventura's experience & skills.",
-        getStarted: 'New Conversation',
-        inputPlaceholder: 'Ask about experience, skills, contact...',
-        footer: ''
-      }
-    };
+  const WEBHOOK =
+    "https://clairemv.app.n8n.cloud/webhook/c97dc6e7-756c-4e52-8ec5-a877f7a93fa9/chat";
 
-    createChat({
-      webhookUrl: WEBHOOK,
-      target: '#chat-box',
-      mode: 'fullscreen',
-      showWelcomeScreen: false,
-      initialMessages,
-      i18n
-    });
+  const initialMessages = [
+    "Hi! 👋 I'm Minnie's portfolio assistant.",
+    "Ask me anything about her experience, skills, certifications, or how to get in touch."
+  ];
 
-    createChat({
-      webhookUrl: WEBHOOK,
-      mode: 'window',
-      showWelcomeScreen: false,
-      initialMessages,
-      i18n
-    });
-  </script>
+  const i18n = {
+    en: {
+      title: "Chat with Minnie's Assistant",
+      subtitle: "Ask about Minnie Claire Ventura's experience & skills.",
+      getStarted: "New Conversation",
+      inputPlaceholder: "Ask about experience, skills, contact...",
+      footer: ""
+    }
+  };
+
+  /* Embedded chat in page */
+  createChat({
+    webhookUrl: WEBHOOK,
+    target: "#chat-box",
+    showWelcomeScreen: false,
+    initialMessages,
+    i18n
+  });
+
+  /* Floating chat bubble */
+  createChat({
+    webhookUrl: WEBHOOK,
+    mode: "window",
+    showWelcomeScreen: false,
+    initialMessages,
+    i18n
+  });
+</script>
 
 </body>
 </html>
