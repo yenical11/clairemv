@@ -21,7 +21,26 @@
       --line: #e2e8f0;
       --page: #f1f5f9;
       --section-alt: #ffffff;
+
+      /* Global n8n Chat variables (Light Mode) */
+      --chat--color-primary: #2563eb;
+      --chat--color-secondary: #1e3a8a;
+      --chat--toggle--background: #2563eb;
+      --chat--toggle--hover--background: #1d4ed8;
+      --chat--toggle--color: #ffffff;
+      --chat--background: #ffffff;
+      --chat--color-text: #0f172a;
+      --chat--header--background: #ffffff;
+      --chat--header--color: #0f172a;
+      --chat--message--bot--background: #f1f5f9;
+      --chat--message--bot--color: #0f172a;
+      --chat--message--user--background: #2563eb;
+      --chat--message--user--color: #ffffff;
+      --chat--input--background: #ffffff;
+      --chat--input--color: #0f172a;
+      --chat--border-color: #e2e8f0;
     }
+
     [data-theme="dark"] {
       --card: #1e293b;
       --accent: #60a5fa;
@@ -31,7 +50,39 @@
       --line: #334155;
       --page: #0b1220;
       --section-alt: #111a2e;
+
+      /* n8n Chat Dark Mode Overrides */
+      --chat--background: #1e293b;
+      --chat--color-text: #e2e8f0;
+      --chat--header--background: #0f172a;
+      --chat--header--color: #f8fafc;
+      --chat--message--bot--background: #334155;
+      --chat--message--bot--color: #f8fafc;
+      --chat--message--user--background: #2563eb;
+      --chat--message--user--color: #ffffff;
+      --chat--input--background: #0f172a;
+      --chat--input--color: #f8fafc;
+      --chat--border-color: #334155;
+
+      /* Floating Chat Launcher (Dark Mode) */
+      --chat--toggle--background: #2563eb;
+      --chat--toggle--hover--background: #3b82f6;
+      --chat--toggle--color: #ffffff;
     }
+
+    /* Floating Chat Launcher Hover Animations */
+    .chat-widget-toggle-button,
+    button.chat-toggle {
+      transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4) !important;
+    }
+
+    .chat-widget-toggle-button:hover,
+    button.chat-toggle:hover {
+      transform: scale(1.08) !important;
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.6) !important;
+    }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
@@ -50,8 +101,8 @@
       background-size: 400% 400%;
       animation: gradientShift 16s ease infinite;
       color: #fff;
-      padding: 56px 0 48px; /* reduced for tighter, modern header */
-      overflow: visible; /* allow intro paragraph to expand */
+      padding: 56px 0 48px;
+      overflow: visible;
     }
     @keyframes gradientShift {
       0% { background-position: 0% 50%; }
@@ -122,11 +173,10 @@
     .job {
       background: var(--card); border: 1px solid var(--line); border-radius: 12px;
       padding: 20px 22px; margin-bottom: 18px; box-shadow: 0 1px 3px rgba(0,0,0,.04);
-      transition: transform .2s ease, box-shadow .2s ease;
+      transition: transform .2s ease, box-shadow .2s ease, background .3s ease;
     }
     .job:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,.10); }
     .job h3 { font-size: 1.12rem; }
-    /* Make work experience details high-contrast in both themes */
     .job .meta { color: var(--text); font-size: .9rem; margin: 2px 0 12px; }
     .job ul { margin-left: 18px; color: var(--text); }
     .job ul li { margin-bottom: 4px; }
@@ -135,7 +185,7 @@
     .card {
       background: var(--card); border: 1px solid var(--line); border-radius: 12px;
       padding: 18px 20px; box-shadow: 0 1px 3px rgba(0,0,0,.04);
-      transition: transform .2s ease, box-shadow .2s ease;
+      transition: transform .2s ease, box-shadow .2s ease, background .3s ease;
     }
     .card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,.10); }
     .card h4 { font-size: 1rem; margin-bottom: 10px; color: var(--accent); }
@@ -145,6 +195,7 @@
       padding: 5px 12px; font-size: .82rem; font-weight: 500;
       transition: transform .15s ease, background .15s ease;
     }
+    [data-theme="dark"] .chip { color: #93c5fd; }
     .chip:hover { transform: translateY(-3px) scale(1.05); background: #bfdbfe; }
 
     /* Certification flip cards */
@@ -162,7 +213,7 @@
       align-items: center; justify-content: center; text-align: center;
       padding: 20px; border: 1px solid var(--line);
     }
-    .flip-front { background: var(--card); box-shadow: 0 1px 3px rgba(0,0,0,.04); gap: 8px; }
+    .flip-front { background: var(--card); box-shadow: 0 1px 3px rgba(0,0,0,.04); gap: 8px; transition: background .3s ease; }
     .flip-front strong { font-size: .98rem; line-height: 1.3; }
     .flip-front small { color: var(--muted); font-size: .85rem; }
     .flip-back {
@@ -178,21 +229,15 @@
     .flip-back a:hover { text-decoration: none; background: rgba(255,255,255,.18); }
 
     footer {
-      background: var(--bg); color: #cbd5e1; padding: 32px 0; text-align: center; font-size: .9rem;
+      background: var(--bg-soft); color: #cbd5e1; padding: 32px 0; text-align: center; font-size: .9rem;
+      border-top: 1px solid var(--line);
     }
     footer a { color: #93c5fd; }
     .hint {
       text-align: center; color: var(--muted); font-size: .9rem; margin-top: 28px;
     }
 
-    :root {
-      --chat--color-primary: #2563eb;
-      --chat--color-secondary: #1e3a8a;
-      --chat--toggle--background: #2563eb;
-      --chat--toggle--hover--background: #1d4ed8;
-    }
-
-    /* Inline chat box */
+    /* Inline chat box styling overrides */
     #chat-box {
       height: 600px;
       border: 1px solid var(--line);
@@ -200,6 +245,7 @@
       overflow: hidden;
       background: var(--card);
       box-shadow: 0 4px 16px rgba(0,0,0,.06);
+      transition: background .3s ease, border-color .3s ease;
     }
     #chat-box .chat-layout { height: 100%; }
 
@@ -235,12 +281,14 @@
       <div class="hero-text">
         <h1>Minnie Claire Ventura</h1>
         <div class="role">Data Engineer | Data Analyst | AI Enthusiast</div>
-         <div class="contacts">
+        <div class="contacts">
           <a href="mailto:manarangclaire@gmail.com">✉ manarangclaire@gmail.com</a>
           <span>📞 +63 991 542 5200</span>
           <span>📍 Biñan, Laguna, Philippines</span>
           <a href="https://www.linkedin.com/in/clairemanarangventura" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn profile">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.447 20.452H16.89v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.348V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z" /> </svg>
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M20.447 20.452H16.89v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.348V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z" />
+            </svg>
             <span class="social-handle">/in/clairemanarangventura</span>
           </a>
         </div>
@@ -255,11 +303,7 @@
   <section>
     <div class="wrap reveal">
       <h2>Professional Overview</h2>
-      <p>Experienced Data Engineer and Data Analyst with 10+ years of progressive IT experience
-across data modeling, enterprise system integration, and cloud technologies. Proven in
-building and scaling large datasets, optimizing data storage, and translating complex data
-into actionable insights through advanced analytics and data visualization to support
-business decision-making.
+      <p>Data Engineer and Data Analyst with 10+ years of progressive IT experience across data modeling, enterprise system integration, and cloud technologies. Proven in building and scaling large datasets, optimizing data storage, and translating complex data into actionable insights through advanced analytics and data visualization to support business decision-making.</p>
     </div>
   </section>
 
@@ -443,7 +487,7 @@ business decision-making.
   <section id="ask">
     <div class="wrap reveal">
       <h2>Ask Minnie's AI Assistant</h2>
-      <p style="margin-bottom:18px;color:var(--muted);">Type a question below about Minnie's experience, education, skills, or certifications. For anything not covered, the assistant will point y[...][...]
+      <p style="margin-bottom:18px;color:var(--muted);">Type a question below about Minnie's experience, education, skills, or certifications. For anything not covered, the assistant will point you to contact her directly.</p>
       <div id="chat-box"></div>
       <p class="hint">💬 You can also use the chat bubble in the bottom-right corner anytime.</p>
     </div>
@@ -451,7 +495,7 @@ business decision-making.
 
   <footer>
     <div class="wrap">
-      <p>© 2026 Minnie Claire Ventura · <a href="mailto:manarangclaire@gmail.com">manarangclaire@gmail.com</a> · <a href="https://www.linkedin.com/in/clairemanarangventura" target="_blank" rel="noo[...]
+      <p>© 2026 Minnie Claire Ventura · <a href="mailto:manarangclaire@gmail.com">manarangclaire@gmail.com</a> · <a href="https://www.linkedin.com/in/clairemanarangventura" target="_blank" rel="noopener">LinkedIn</a></p>
     </div>
   </footer>
 
@@ -463,11 +507,19 @@ business decision-making.
       var saved = localStorage.getItem("theme");
       var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
       var theme = saved || (prefersDark ? "dark" : "light");
+
       apply(theme);
+
       function apply(t) {
-        if (t === "dark") { root.setAttribute("data-theme", "dark"); btn.textContent = "☀️"; }
-        else { root.removeAttribute("data-theme"); btn.textContent = "🌙"; }
+        if (t === "dark") { 
+          root.setAttribute("data-theme", "dark"); 
+          btn.textContent = "☀️"; 
+        } else { 
+          root.removeAttribute("data-theme"); 
+          btn.textContent = "🌙"; 
+        }
       }
+
       btn.addEventListener("click", function () {
         theme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
         localStorage.setItem("theme", theme);
@@ -486,7 +538,7 @@ business decision-making.
     document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
   </script>
 
-  <!-- n8n Chat widget: AI assistant that answers visitor questions -->
+  <!-- n8n Chat widget execution script -->
   <script type="module">
     import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
 
