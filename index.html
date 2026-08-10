@@ -41,7 +41,10 @@
       --chat--border-color: #e2e8f0;
     }
 
-    [data-theme="dark"] {
+    /* n8n Chat Dark Mode Overrides & Specificity Boost */
+    [data-theme="dark"],
+    [data-theme="dark"] .n8n-chat,
+    [data-theme="dark"] #chat-box {
       --card: #1e293b;
       --accent: #60a5fa;
       --accent-soft: #1e3a5f;
@@ -51,39 +54,47 @@
       --page: #0b1220;
       --section-alt: #111a2e;
 
-      /* n8n Chat Dark Mode Overrides */
-      --chat--background: #1e293b;
-      --chat--color-text: #e2e8f0;
-      --chat--header--background: #0f172a;
-      --chat--header--color: #f8fafc;
-      --chat--message--bot--background: #334155;
-      --chat--message--bot--color: #f8fafc;
-      --chat--message--user--background: #2563eb;
-      --chat--message--user--color: #ffffff;
-      --chat--input--background: #0f172a;
-      --chat--input--color: #f8fafc;
-      --chat--border-color: #334155;
+      --chat--background: #1e293b !important;
+      --chat--color-text: #e2e8f0 !important;
+      --chat--header--background: #0f172a !important;
+      --chat--header--color: #f8fafc !important;
+      --chat--message--bot--background: #334155 !important;
+      --chat--message--bot--color: #f8fafc !important;
+      --chat--message--user--background: #2563eb !important;
+      --chat--message--user--color: #ffffff !important;
+      --chat--input--background: #0f172a !important;
+      --chat--input--color: #ffffff !important;
+      --chat--input--text-color: #ffffff !important;
+      --chat--border-color: #334155 !important;
 
       /* Floating Chat Launcher (Dark Mode) */
-      --chat--toggle--background: #2563eb;
-      --chat--toggle--hover--background: #3b82f6;
-      --chat--toggle--color: #ffffff;
+      --chat--toggle--background: #2563eb !important;
+      --chat--toggle--hover--background: #3b82f6 !important;
+      --chat--toggle--color: #ffffff !important;
     }
 
-    /* Force text color and background inside n8n Chat input box for Dark Mode */
-    [data-theme="dark"] .chat-input input,
-    [data-theme="dark"] .chat-input textarea,
+    /* Direct input element overrides for typed text and placeholder */
+    [data-theme="dark"] textarea,
+    [data-theme="dark"] input,
+    [data-theme="dark"] [contenteditable="true"],
+    [data-theme="dark"] .chat-input,
+    [data-theme="dark"] .chat-input-textarea,
+    [data-theme="dark"] .n8n-chat textarea,
     [data-theme="dark"] .n8n-chat input,
-    [data-theme="dark"] .n8n-chat textarea {
-      color: #f8fafc !important;
+    [data-theme="dark"] .n8n-chat [contenteditable="true"] {
+      color: #ffffff !important;
+      -webkit-text-fill-color: #ffffff !important; /* Fixes WebKit/Safari text color overrides */
       background-color: #0f172a !important;
     }
 
-    [data-theme="dark"] .chat-input input::placeholder,
-    [data-theme="dark"] .chat-input textarea::placeholder,
-    [data-theme="dark"] .n8n-chat input::placeholder,
-    [data-theme="dark"] .n8n-chat textarea::placeholder {
+    /* Placeholder text color */
+    [data-theme="dark"] textarea::placeholder,
+    [data-theme="dark"] input::placeholder,
+    [data-theme="dark"] [contenteditable="true"]::placeholder,
+    [data-theme="dark"] .n8n-chat ::placeholder {
       color: #94a3b8 !important;
+      -webkit-text-fill-color: #94a3b8 !important;
+      opacity: 1 !important;
     }
 
     /* Floating Chat Launcher Hover Animations */
