@@ -21,6 +21,10 @@
       --line: #e2e8f0;
       --page: #f1f5f9;
       --section-alt: #ffffff;
+      --chat--color-primary: #2563eb;
+      --chat--color-secondary: #1e3a8a;
+      --chat--toggle--background: #2563eb;
+      --chat--toggle--hover--background: #1d4ed8;
     }
     [data-theme="dark"] {
       --card: #1e293b;
@@ -50,8 +54,8 @@
       background-size: 400% 400%;
       animation: gradientShift 16s ease infinite;
       color: #fff;
-      padding: 56px 0 48px; /* reduced for tighter, modern header */
-      overflow: visible; /* allow intro paragraph to expand */
+      padding: 56px 0 48px;
+      overflow: visible;
     }
     @keyframes gradientShift {
       0% { background-position: 0% 50%; }
@@ -126,7 +130,6 @@
     }
     .job:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,.10); }
     .job h3 { font-size: 1.12rem; }
-    /* Make work experience details high-contrast in both themes */
     .job .meta { color: var(--text); font-size: .9rem; margin: 2px 0 12px; }
     .job ul { margin-left: 18px; color: var(--text); }
     .job ul li { margin-bottom: 4px; }
@@ -185,15 +188,9 @@
       text-align: center; color: var(--muted); font-size: .9rem; margin-top: 28px;
     }
 
-    :root {
-      --chat--color-primary: #2563eb;
-      --chat--color-secondary: #1e3a8a;
-      --chat--toggle--background: #2563eb;
-      --chat--toggle--hover--background: #1d4ed8;
-    }
-
-    /* Inline chat box */
+    /* Inline chat box container styling */
     #chat-box {
+      min-height: 500px;
       height: 600px;
       border: 1px solid var(--line);
       border-radius: 14px;
@@ -201,7 +198,6 @@
       background: var(--card);
       box-shadow: 0 4px 16px rgba(0,0,0,.06);
     }
-    #chat-box .chat-layout { height: 100%; }
 
     @media (max-width: 1024px) {
       header.hero { padding: 48px 0 40px; }
@@ -241,12 +237,8 @@
           <span>📍 Biñan, Laguna, Philippines</span>
           <a href="https://www.linkedin.com/in/clairemanarangventura" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn profile">
             <svg viewBox="0 0 24 24" aria-hidden="true">
-2
-<path fill="currentColor"
-3
-d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.03-1.85-3.03-1.85 0-2.13 1.45-2.13 2.94v5.66H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.27 2.38 4.27 5.47v6.27zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0z"/>
-4
-</svg>
+              <path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.03-1.85-3.03-1.85 0-2.13 1.45-2.13 2.94v5.66H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.27 2.38 4.27 5.47v6.27zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0z"/>
+            </svg>
             <span class="social-handle">/in/clairemanarangventura</span>
           </a>
         </div>
@@ -257,21 +249,22 @@ d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.03-1.85-3.03-1.85 0-2.13 1.45-2.13 2.94
       </div>
     </div>
   </header>
-<section>
-  <div class="wrap">
-    <h2 class="reveal">Professional Overview</h2>
-    <div class="card reveal">
-      <p>
-        Experienced Data Engineer and Data Analyst with 10+ years of progressive IT experience
-        across data modeling, enterprise system integration, and cloud technologies. Proven in
-        building and scaling large datasets, optimizing data storage, and translating complex data
-        into actionable insights through advanced analytics and data visualization to support
-        business decision-making.
-      </p>
+
+  <section>
+    <div class="wrap">
+      <h2 class="reveal">Professional Overview</h2>
+      <div class="card reveal">
+        <p>
+          Experienced Data Engineer and Data Analyst with 10+ years of progressive IT experience
+          across data modeling, enterprise system integration, and cloud technologies. Proven in
+          building and scaling large datasets, optimizing data storage, and translating complex data
+          into actionable insights through advanced analytics and data visualization to support
+          business decision-making.
+        </p>
+      </div>
     </div>
-  </div>
-</section>
-              
+  </section>
+
   <section>
     <div class="wrap">
       <h2 class="reveal">Work Experience</h2>
@@ -443,7 +436,7 @@ d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.03-1.85-3.03-1.85 0-2.13 1.45-2.13 2.94
     <div class="wrap reveal">
       <h2>Education</h2>
       <div class="card">
-        <strong>Bachelor's Degree</strong>
+        <strong>Bachelor's Degree in Computer Science</strong>
         <div class="meta" style="color:var(--muted);font-size:.9rem;">Cavite State University · June 2007 – October 2011</div>
       </div>
     </div>
@@ -495,47 +488,38 @@ d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.03-1.85-3.03-1.85 0-2.13 1.45-2.13 2.94
     document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
   </script>
 
-  <!-- n8n Chat widget: AI assistant that answers visitor questions -->
- <!-- n8n Chat widget -->
-<script type="module">
-  import { createChat } from "https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js";
+  <!-- Corrected n8n Chat widget script -->
+  <script type="module">
+    import { createChat } from "https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js";
 
-  const WEBHOOK =
-    "https://clairemv.app.n8n.cloud/webhook/c97dc6e7-756c-4e52-8ec5-a877f7a93fa9/chat";
+    // Standard n8n chat webhook URL
+    const WEBHOOK = "https://clairemv.app.n8n.cloud/webhook/c97dc6e7-756c-4e52-8ec5-a877f7a93fa9/chat";
 
-  const initialMessages = [
-    "Hi! 👋 I'm Minnie's portfolio assistant.",
-    "Ask me anything about her experience, skills, certifications, or how to get in touch."
-  ];
+    const initialMessages = [
+      "Hi! 👋 I'm Minnie's portfolio assistant.",
+      "Ask me anything about her experience, skills, certifications, or how to get in touch."
+    ];
 
-  const i18n = {
-    en: {
-      title: "Chat with Minnie's Assistant",
-      subtitle: "Ask about Minnie Claire Ventura's experience & skills.",
-      getStarted: "New Conversation",
-      inputPlaceholder: "Ask about experience, skills, contact...",
-      footer: ""
-    }
-  };
+    const i18n = {
+      en: {
+        title: "Chat with Minnie's Assistant",
+        subtitle: "Ask about Minnie Claire Ventura's experience & skills.",
+        getStarted: "New Conversation",
+        inputPlaceholder: "Ask about experience, skills, contact...",
+        footer: ""
+      }
+    };
 
-  /* Embedded chat in page */
-  createChat({
-    webhookUrl: WEBHOOK,
-    target: "#chat-box",
-    showWelcomeScreen: false,
-    initialMessages,
-    i18n
-  });
-
-  /* Floating chat bubble */
-  createChat({
-    webhookUrl: WEBHOOK,
-    mode: "window",
-    showWelcomeScreen: false,
-    initialMessages,
-    i18n
-  });
-</script>
+    // Single chat initialization embedded directly into #chat-box container
+    createChat({
+      webhookUrl: WEBHOOK,
+      target: "#chat-box",
+      mode: "fullscreen",
+      showWelcomeScreen: false,
+      initialMessages: initialMessages,
+      i18n: i18n
+    });
+  </script>
 
 </body>
 </html>
