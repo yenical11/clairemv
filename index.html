@@ -21,30 +21,8 @@
       --line: #e2e8f0;
       --page: #f1f5f9;
       --section-alt: #ffffff;
-
-      /* Global n8n Chat variables (Light Mode) */
-      --chat--color-primary: #2563eb;
-      --chat--color-secondary: #1e3a8a;
-      --chat--toggle--background: #2563eb;
-      --chat--toggle--hover--background: #1d4ed8;
-      --chat--toggle--color: #ffffff;
-      --chat--background: #ffffff;
-      --chat--color-text: #0f172a;
-      --chat--header--background: #ffffff;
-      --chat--header--color: #0f172a;
-      --chat--message--bot--background: #f1f5f9;
-      --chat--message--bot--color: #0f172a;
-      --chat--message--user--background: #2563eb;
-      --chat--message--user--color: #ffffff;
-      --chat--input--background: #ffffff;
-      --chat--input--color: #0f172a;
-      --chat--border-color: #e2e8f0;
     }
-
-    /* n8n Chat Dark Mode Overrides & Specificity Boost */
-    [data-theme="dark"],
-    [data-theme="dark"] .n8n-chat,
-    [data-theme="dark"] #chat-box {
+    [data-theme="dark"] {
       --card: #1e293b;
       --accent: #60a5fa;
       --accent-soft: #1e3a5f;
@@ -53,63 +31,7 @@
       --line: #334155;
       --page: #0b1220;
       --section-alt: #111a2e;
-
-      --chat--background: #1e293b !important;
-      --chat--color-text: #e2e8f0 !important;
-      --chat--header--background: #0f172a !important;
-      --chat--header--color: #f8fafc !important;
-      --chat--message--bot--background: #334155 !important;
-      --chat--message--bot--color: #f8fafc !important;
-      --chat--message--user--background: #2563eb !important;
-      --chat--message--user--color: #ffffff !important;
-      --chat--input--background: #0f172a !important;
-      --chat--input--color: #ffffff !important;
-      --chat--input--text-color: #ffffff !important;
-      --chat--border-color: #334155 !important;
-
-      /* Floating Chat Launcher (Dark Mode) */
-      --chat--toggle--background: #2563eb !important;
-      --chat--toggle--hover--background: #3b82f6 !important;
-      --chat--toggle--color: #ffffff !important;
     }
-
-    /* Direct input element overrides for typed text and placeholder */
-    [data-theme="dark"] textarea,
-    [data-theme="dark"] input,
-    [data-theme="dark"] [contenteditable="true"],
-    [data-theme="dark"] .chat-input,
-    [data-theme="dark"] .chat-input-textarea,
-    [data-theme="dark"] .n8n-chat textarea,
-    [data-theme="dark"] .n8n-chat input,
-    [data-theme="dark"] .n8n-chat [contenteditable="true"] {
-      color: #ffffff !important;
-      -webkit-text-fill-color: #ffffff !important; /* Fixes WebKit/Safari text color overrides */
-      background-color: #0f172a !important;
-    }
-
-    /* Placeholder text color */
-    [data-theme="dark"] textarea::placeholder,
-    [data-theme="dark"] input::placeholder,
-    [data-theme="dark"] [contenteditable="true"]::placeholder,
-    [data-theme="dark"] .n8n-chat ::placeholder {
-      color: #94a3b8 !important;
-      -webkit-text-fill-color: #94a3b8 !important;
-      opacity: 1 !important;
-    }
-
-    /* Floating Chat Launcher Hover Animations */
-    .chat-widget-toggle-button,
-    button.chat-toggle {
-      transition: transform 0.2s ease, box-shadow 0.2s ease !important;
-      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4) !important;
-    }
-
-    .chat-widget-toggle-button:hover,
-    button.chat-toggle:hover {
-      transform: scale(1.08) !important;
-      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.6) !important;
-    }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
@@ -128,17 +50,17 @@
       background-size: 400% 400%;
       animation: gradientShift 16s ease infinite;
       color: #fff;
-      padding: 56px 0 48px;
-      overflow: visible;
+      padding: 72px 0 64px;
+      overflow: hidden;
     }
     @keyframes gradientShift {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
-    .hero .wrap { display: flex; align-items: center; gap: 28px; }
+    .hero .wrap { display: flex; align-items: flex-start; gap: 28px; flex-wrap: wrap; }
     .avatar {
-      width: 120px; height: 120px; border-radius: 50%;
+      width: 130px; height: 130px; border-radius: 50%;
       background: linear-gradient(135deg, #3b82f6, #22d3ee);
       display: flex; align-items: center; justify-content: center;
       font-size: 44px; font-weight: 700; color: #fff; flex-shrink: 0;
@@ -161,19 +83,18 @@
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-12px); }
     }
-    .hero-text { animation: fadeUp 1s ease both; flex: 1; min-width: 300px; max-width: 680px; }
+    .hero-text { animation: fadeUp 1s ease both; }
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
       to { opacity: 1; transform: translateY(0); }
     }
     .hero h1 { font-size: 2.2rem; line-height: 1.15; }
-    .hero .role { color: #93c5fd; font-size: 1.125rem; margin-top: 6px; font-weight: 600; }
-    .hero p.tag { color: rgba(226,232,240,0.95); margin-top: 12px; max-width: 100%; font-size: 0.99rem; }
+    .hero .role { color: #93c5fd; font-size: 1.15rem; margin-top: 6px; font-weight: 600; }
+    .hero p.tag { color: #cbd5e1; margin-top: 14px; max-width: 620px; }
     .hero .contacts { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 14px; font-size: .95rem; }
     .hero .contacts a, .hero .contacts span { color: #e2e8f0; }
-    .hero .contacts a { display: inline-flex; align-items: center; gap: 8px; }
+    .hero .contacts a { display: inline-flex; align-items: center; gap: 6px; }
     .hero .contacts a svg { width: 18px; height: 18px; fill: #fff; background: #0a66c2; border-radius: 3px; padding: 2px; }
-    .hero .contacts a .social-handle { margin-left: 6px; color: rgba(255,255,255,0.95); font-weight: 600; font-size: .92rem; }
     .hero .cta { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 12px; }
     .btn {
       display: inline-block; padding: 11px 22px; border-radius: 999px;
@@ -200,19 +121,19 @@
     .job {
       background: var(--card); border: 1px solid var(--line); border-radius: 12px;
       padding: 20px 22px; margin-bottom: 18px; box-shadow: 0 1px 3px rgba(0,0,0,.04);
-      transition: transform .2s ease, box-shadow .2s ease, background .3s ease;
+      transition: transform .2s ease, box-shadow .2s ease;
     }
     .job:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,.10); }
     .job h3 { font-size: 1.12rem; }
-    .job .meta { color: var(--text); font-size: .9rem; margin: 2px 0 12px; }
-    .job ul { margin-left: 18px; color: var(--text); }
+    .job .meta { color: var(--muted); font-size: .9rem; margin: 2px 0 12px; }
+    .job ul { margin-left: 18px; color: #334155; }
     .job ul li { margin-bottom: 4px; }
 
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; margin-top: 20px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
     .card {
       background: var(--card); border: 1px solid var(--line); border-radius: 12px;
       padding: 18px 20px; box-shadow: 0 1px 3px rgba(0,0,0,.04);
-      transition: transform .2s ease, box-shadow .2s ease, background .3s ease;
+      transition: transform .2s ease, box-shadow .2s ease;
     }
     .card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,.10); }
     .card h4 { font-size: 1rem; margin-bottom: 10px; color: var(--accent); }
@@ -222,27 +143,26 @@
       padding: 5px 12px; font-size: .82rem; font-weight: 500;
       transition: transform .15s ease, background .15s ease;
     }
-    [data-theme="dark"] .chip { color: #93c5fd; }
     .chip:hover { transform: translateY(-3px) scale(1.05); background: #bfdbfe; }
 
     /* Certification flip cards */
-    .flip-card { background: transparent; perspective: 1200px; min-height: 180px; }
+    .flip-card { background: transparent; perspective: 1200px; min-height: 160px; }
     .flip-inner {
-      position: relative; width: 100%; min-height: 180px;
+      position: relative; width: 100%; min-height: 160px;
       transition: transform .8s cubic-bezier(.4,.2,.2,1);
       transform-style: preserve-3d;
     }
     .flip-card:hover .flip-inner, .flip-card:focus-within .flip-inner { transform: rotateY(180deg); }
     .flip-front, .flip-back {
-      position: absolute; inset: 0; min-height: 180px;
+      position: absolute; inset: 0; min-height: 160px;
       -webkit-backface-visibility: hidden; backface-visibility: hidden;
       border-radius: 12px; display: flex; flex-direction: column;
       align-items: center; justify-content: center; text-align: center;
-      padding: 20px; border: 1px solid var(--line);
+      padding: 18px 20px; border: 1px solid var(--line);
     }
-    .flip-front { background: var(--card); box-shadow: 0 1px 3px rgba(0,0,0,.04); gap: 8px; transition: background .3s ease; }
-    .flip-front strong { font-size: .98rem; line-height: 1.3; }
-    .flip-front small { color: var(--muted); font-size: .85rem; }
+    .flip-front { background: var(--card); box-shadow: 0 1px 3px rgba(0,0,0,.04); gap: 6px; }
+    .flip-front strong { font-size: .98rem; }
+    .flip-front small { color: var(--muted); }
     .flip-back {
       background: linear-gradient(135deg, #2563eb, #1e3a8a);
       color: #fff; transform: rotateY(180deg); gap: 12px;
@@ -256,15 +176,21 @@
     .flip-back a:hover { text-decoration: none; background: rgba(255,255,255,.18); }
 
     footer {
-      background: var(--bg-soft); color: #cbd5e1; padding: 32px 0; text-align: center; font-size: .9rem;
-      border-top: 1px solid var(--line);
+      background: var(--bg); color: #cbd5e1; padding: 32px 0; text-align: center; font-size: .9rem;
     }
     footer a { color: #93c5fd; }
     .hint {
       text-align: center; color: var(--muted); font-size: .9rem; margin-top: 28px;
     }
 
-    /* Inline chat box styling overrides */
+    :root {
+      --chat--color-primary: #2563eb;
+      --chat--color-secondary: #1e3a8a;
+      --chat--toggle--background: #2563eb;
+      --chat--toggle--hover--background: #1d4ed8;
+    }
+
+    /* Inline chat box */
     #chat-box {
       height: 600px;
       border: 1px solid var(--line);
@@ -272,25 +198,8 @@
       overflow: hidden;
       background: var(--card);
       box-shadow: 0 4px 16px rgba(0,0,0,.06);
-      transition: background .3s ease, border-color .3s ease;
     }
     #chat-box .chat-layout { height: 100%; }
-
-    @media (max-width: 1024px) {
-      header.hero { padding: 48px 0 40px; }
-      .avatar { width: 110px; height: 110px; }
-    }
-    @media (max-width: 768px) {
-      .hero .wrap { flex-direction: column; align-items: flex-start; gap: 18px; }
-      .hero-text { min-width: auto; }
-      .avatar { width: 100px; height: 100px; }
-    }
-    @media (max-width: 420px) {
-      .hero .contacts a .social-handle { display: none; }
-      .avatar { width: 88px; height: 88px; }
-      .hero h1 { font-size: 1.6rem; }
-      .hero .role { font-size: 1rem; }
-    }
 
     @media (prefers-reduced-motion: reduce) {
       * { animation: none !important; transition: none !important; }
@@ -304,20 +213,16 @@
 
   <header class="hero">
     <div class="wrap">
-      <div class="avatar"><img src="claire%202x2.png" alt="Minnie Claire Ventura" onerror="this.style.display='none';this.parentNode.textContent='MV';" /></div>
+      <div class="avatar"><img src="claire%202x2.png" alt="Minnie Claire Ventura" onerror="this.style.display=&quot;none&quot;;this.parentNode.textContent=&quot;MV&quot;;" /></div>
       <div class="hero-text">
         <h1>Minnie Claire Ventura</h1>
         <div class="role">Data Engineer | Data Analyst | AI Enthusiast</div>
+        <p class="tag">Experienced Data Engineer and Data Analyst with 10+ years of progressive IT experience across data modeling, enterprise system integration, and cloud technologies — turning complex data into actionable insights.</p>
         <div class="contacts">
           <a href="mailto:manarangclaire@gmail.com">✉ manarangclaire@gmail.com</a>
           <span>📞 +63 991 542 5200</span>
           <span>📍 Biñan, Laguna, Philippines</span>
-          <a href="https://www.linkedin.com/in/clairemanarangventura" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn profile">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-              <path fill="currentColor" d="M20.447 20.452H16.89v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.348V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z" />
-            </svg>
-            <span class="social-handle">/in/clairemanarangventura</span>
-          </a>
+          <a href="https://www.linkedin.com/in/clairemanarangventura" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.05c.53-1 1.83-2.2 3.77-2.2 4.03 0 4.78 2.65 4.78 6.1V24h-4v-7.1c0-1.7-.03-3.9-2.38-3.9-2.38 0-2.75 1.86-2.75 3.78V24h-4V8z"/></svg>in/clairemanarangventura</a>
         </div>
         <div class="cta">
           <a class="btn btn-primary" href="#ask">Ask the AI Assistant</a>
@@ -330,7 +235,7 @@
   <section>
     <div class="wrap reveal">
       <h2>Professional Overview</h2>
-      <p>Data Engineer and Data Analyst with 10+ years of progressive IT experience across data modeling, enterprise system integration, and cloud technologies. Proven in building and scaling large datasets, optimizing data storage, and translating complex data into actionable insights through advanced analytics and data visualization to support business decision-making.</p>
+      <p>Proven in building and scaling large datasets, optimizing data storage, and translating complex data into actionable insights through advanced analytics and data visualization to support business decision-making.</p>
     </div>
   </section>
 
@@ -514,7 +419,7 @@
   <section id="ask">
     <div class="wrap reveal">
       <h2>Ask Minnie's AI Assistant</h2>
-      <p style="margin-bottom:18px;color:var(--muted);">Type a question below about Minnie's experience, education, skills, or certifications. For anything not covered, the assistant will point you to contact her directly.</p>
+      <p style="margin-bottom:18px;color:var(--muted);">Type a question below about Minnie's experience, education, skills, or certifications. For anything not covered, the assistant will point you to her email or phone.</p>
       <div id="chat-box"></div>
       <p class="hint">💬 You can also use the chat bubble in the bottom-right corner anytime.</p>
     </div>
@@ -534,19 +439,11 @@
       var saved = localStorage.getItem("theme");
       var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
       var theme = saved || (prefersDark ? "dark" : "light");
-
       apply(theme);
-
       function apply(t) {
-        if (t === "dark") { 
-          root.setAttribute("data-theme", "dark"); 
-          btn.textContent = "☀️"; 
-        } else { 
-          root.removeAttribute("data-theme"); 
-          btn.textContent = "🌙"; 
-        }
+        if (t === "dark") { root.setAttribute("data-theme", "dark"); btn.textContent = "☀️"; }
+        else { root.removeAttribute("data-theme"); btn.textContent = "🌙"; }
       }
-
       btn.addEventListener("click", function () {
         theme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
         localStorage.setItem("theme", theme);
@@ -565,7 +462,7 @@
     document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
   </script>
 
-  <!-- n8n Chat widget execution script -->
+  <!-- n8n Chat widget: AI assistant that answers visitor questions -->
   <script type="module">
     import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
 
