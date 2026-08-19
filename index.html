@@ -11,27 +11,33 @@
 
   <style>
     :root {
-      --bg: #0f172a;
-      --bg-soft: #1e293b;
-      --card: #ffffff;
-      --accent: #2563eb;
-      --accent-soft: #dbeafe;
-      --text: #0f172a;
-      --muted: #64748b;
-      --line: #e2e8f0;
-      --page: #f1f5f9;
-      --section-alt: #ffffff;
-    }
+  --bg: #0f172a;
+  --bg-soft: #1e293b;
+  --card: #ffffff;
+  --accent: #2563eb;
+  --accent-soft: #dbeafe;
+  --text: #0f172a;
+  --muted: #64748b;
+  --line: #e2e8f0;
+  --page: #f1f5f9;
+  --section-alt: #ffffff;
+
+  /* Work experience text color */
+  --job-text: #334155;
+}
     [data-theme="dark"] {
-      --card: #1e293b;
-      --accent: #60a5fa;
-      --accent-soft: #1e3a5f;
-      --text: #e2e8f0;
-      --muted: #94a3b8;
-      --line: #334155;
-      --page: #0b1220;
-      --section-alt: #111a2e;
-    }
+  --card: #1e293b;
+  --accent: #60a5fa;
+  --accent-soft: #1e3a5f;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --line: #334155;
+  --page: #0b1220;
+  --section-alt: #111a2e;
+
+  /* Work experience text color */
+  --job-text: #e2e8f0;
+}
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
@@ -124,10 +130,26 @@
       transition: transform .2s ease, box-shadow .2s ease;
     }
     .job:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,.10); }
-    .job h3 { font-size: 1.12rem; }
-    .job .meta { color: var(--muted); font-size: .9rem; margin: 2px 0 12px; }
-    .job ul { margin-left: 18px; color: #e2e8f0; }
-    .job ul li { margin-bottom: 4px; }
+    .job h3 {
+  font-size: 1.12rem;
+  color: var(--text);
+}
+
+.job .meta {
+  color: var(--muted);
+  font-size: .9rem;
+  margin: 2px 0 12px;
+}
+
+.job ul {
+  margin-left: 18px;
+  color: var(--job-text);
+}
+
+.job ul li {
+  margin-bottom: 4px;
+  color: var(--job-text);
+}
 
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
     .card {
